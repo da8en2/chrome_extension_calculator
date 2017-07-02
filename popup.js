@@ -29,6 +29,11 @@ $(function(){
     $('#0').click(function(){
         $('#display').val( $('#display').val() + '0')
     });
+    $('#decimalPoint').click(function(){
+        if ( !($('#display').val()).includes('.') ) {
+          $('#display').val( $('#display').val() + '.')
+        }  
+    });
 
     $('#C').click(function(){
         $('#display').val('')
@@ -68,20 +73,20 @@ $(function(){
         var value2 = $('#display').val();
         if (calc.operation == 'add') {
           if (calc.value1) {
-            result += parseInt(calc.value1);
-            result += parseInt(value2);
+            result += parseFloat(calc.value1);
+            result += parseFloat(value2);
           }
         } else if (calc.operation == 'subtract') {
           if (calc.value1) {
-            result += parseInt(calc.value1);
-            result -= parseInt(value2);
+            result += parseFloat(calc.value1);
+            result -= parseFloat(value2);
           }
         } else if (calc.operation == 'multiply') {
           if (calc.value1) {
-            result = parseInt(value2)*parseInt(calc.value1);
+            result = parseFloat(value2)*parseFloat(calc.value1);
           }
         } else if (calc.operation == 'divide') {
-          result = parseInt(calc.value1)/parseInt(value2);
+          result = parseFloat(calc.value1)/parseFloat(value2);
         }
         $('#display').val(result);
       });
