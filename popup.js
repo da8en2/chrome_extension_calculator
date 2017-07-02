@@ -1,38 +1,70 @@
 $(function(){
     $('#1').click(function(){
-        $('#display').val( $('#display').val() + '1')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '1')
     });
     $('#2').click(function(){
-        $('#display').val( $('#display').val() + '2')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '2')
     });
     $('#3').click(function(){
-        $('#display').val( $('#display').val() + '3')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '3')
     });
     $('#4').click(function(){
-        $('#display').val( $('#display').val() + '4')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '4')
     });
     $('#5').click(function(){
-        $('#display').val( $('#display').val() + '5')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '5')
     });
     $('#6').click(function(){
-        $('#display').val( $('#display').val() + '6')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '6')
     });
     $('#7').click(function(){
-        $('#display').val( $('#display').val() + '7')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '7')
     });
     $('#8').click(function(){
-        $('#display').val( $('#display').val() + '8')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '8')
     });
     $('#9').click(function(){
-        $('#display').val( $('#display').val() + '9')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      $('#display').val( $('#display').val() + '9')
     });
     $('#0').click(function(){
-        $('#display').val( $('#display').val() + '0')
+      if ( $('#display').val().includes(' ') ) {
+        $('#display').val('');
+      }
+      if ( $('#display').val() != '' ) {
+          $('#display').val( $('#display').val() + '0')
+      }
     });
     $('#decimalPoint').click(function(){
         if ( !($('#display').val()).includes('.') ) {
           $('#display').val( $('#display').val() + '.')
-        }  
+        }
     });
 
     $('#C').click(function(){
@@ -43,28 +75,28 @@ $(function(){
         var storeValue = $('#display').val();
         chrome.storage.sync.set({'value1': storeValue});
         chrome.storage.sync.set({'operation': 'add'});
-        $('#display').val('')
+        $('#display').val(storeValue.toString() + ' ');
     });
 
     $('#minus').click(function(){
         var storeValue = $('#display').val();
         chrome.storage.sync.set({'value1': storeValue});
         chrome.storage.sync.set({'operation': 'subtract'});
-        $('#display').val('')
+        $('#display').val(storeValue.toString() + ' ');
     });
 
     $('#times').click(function(){
         var storeValue = $('#display').val();
         chrome.storage.sync.set({'value1': storeValue});
         chrome.storage.sync.set({'operation': 'multiply'});
-        $('#display').val('')
+        $('#display').val(storeValue.toString() + ' ');
     });
 
     $('#dividedby').click(function(){
         var storeValue = $('#display').val();
         chrome.storage.sync.set({'value1': storeValue});
         chrome.storage.sync.set({'operation': 'divide'});
-        $('#display').val('')
+        $('#display').val(storeValue.toString() + ' ');
     });
 
     $('#solve').click(function(){
@@ -88,7 +120,8 @@ $(function(){
         } else if (calc.operation == 'divide') {
           result = parseFloat(calc.value1)/parseFloat(value2);
         }
-        $('#display').val(result);
+        $('#display').val(result.toString() + ' ');
+        chrome.storage.sync.set({'value1': value2});
       });
     });
 });
