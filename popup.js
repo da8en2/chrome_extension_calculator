@@ -62,9 +62,12 @@ $(function(){
       }
     });
     $('#decimalPoint').click(function(){
-        if ( !($('#display').val()).includes('.') ) {
-          $('#display').val( $('#display').val() + '.')
-        }
+      if ( $('#display').val().includes(' ') || $('#display').val() === '0') {
+        $('#display').val('');
+      }
+      if ( !($('#display').val()).includes('.') ) {
+        $('#display').val( $('#display').val() + '.')
+      }
     });
 
     $('#C').click(function(){
